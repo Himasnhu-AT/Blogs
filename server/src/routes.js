@@ -5,7 +5,12 @@ function routes(app) {
         res.send("Hello from server");
     });
 
+    
+
     // app.use('/auth', authRoutes);
 }
+
+
+
 
 export default routes;
