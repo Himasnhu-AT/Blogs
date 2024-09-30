@@ -1,11 +1,10 @@
-const Blog = require("../model/blog");
+import Blog from '../model/blog.js';
 
-async function handleBlogSearch(req, res) {
-
+export async function handleBlogSearch(req, res) {
     const { tags, time, query } = req.query;
     
     try {
-        const requiredBlogs = await Blog.find({});
+        let requiredBlogs = await Blog.find({});
 
         if (tags) {
             const taglist = tags.split(",");
@@ -22,19 +21,13 @@ async function handleBlogSearch(req, res) {
 
         if (query) {
             requiredBlogs = requiredBlogs.filter(blog =>
-                blog.content.tolowercase().includes(query.tolowercase()) ||
-                blog.title.tolowercase().includes(query.tolowercase())
+                blog.content.toLowerCase().includes(query.toLowerCase()) ||
+                blog.title.toLowerCase().includes(query.toLowerCase())
             );
         }
         
         res.json(requiredBlogs);
-    }
-
-    catch (error) {
-        res.json("Failed to Search blogs based on given params",error);
+    } catch (error) {
+        res.status(500).json({ message: "Failed to search blogs based on given params", error });
     }  
-}
-
-module.exports = {
-    handleBlogSearch,
 }
