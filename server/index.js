@@ -14,18 +14,19 @@ const blog = new Blog();
 
 // Load environment variables from .env file
 const PORT = process.env.PORT || 3000;
-const DB = process.env.MONGODB_HOST;
+const DB = process.env.MONGODB_URI || "mongodb://localhost:27017/blogss";
 
 dotenv.config();
 
 // CORS Config
 const corsOptions = {
-    origin: process.env.CORS_ORIGIN || 'http://127.0.0.1', // Specify your allowed frontend origins as an environment variable
+    origin: [process.env.CORS_ORIGIN || 'http://127.0.0.1', 'http://localhost:5173'], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+    credentials: true, 
+    optionsSuccessStatus: 204
 
 
+}
 
 app.use(session({ secret: 'YOUR_SESSION_SECRET', resave: false, saveUninitialized: false }));
 

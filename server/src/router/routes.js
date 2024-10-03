@@ -5,7 +5,7 @@ import postAdmin from "./post-admin.js";
 import { reviewBlog } from "../controllers/blog-review.js";
 import newsRoutes from "./newsletter.js";
 import { userMiddleware } from "../middleware/user.middleware.js";
-import blogRoutes from "./blogs.js";
+import {handleBlogSearch} from "../controllers/search-blog.js"
 import commentroute from "./comment.js"
 import { updateBlog } from "../controllers/blog-controller.js";
 function routes(app) {
@@ -18,7 +18,7 @@ function routes(app) {
     app.use("blogs/comment",userMiddleware,commentroute);
     app.post("/admin", adminMiddleware, postAdmin);
     app.use("/admin/blog/review/:id", reviewBlog);
-    app.use("/blog/search", blogRoutes);
+    app.use("/blog/search", handleBlogSearch);
     app.patch("/blog/update/:id",updateBlog)
 }
 
