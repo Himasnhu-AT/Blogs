@@ -5,6 +5,7 @@ export default {
 		extend: {
 		  backgroundImage: {
         'custom-gradient': "linear-gradient(270deg, rgba(0, 0, 0, 0.05) 0%, #151825 103.32%)",
+				'custom-border':'linear-gradient(141.07deg,rgba(213, 27, 16, 1),rgba(0, 51, 108, 1) 100%), linear-gradient(0deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.2))',
       },
 			fontFamily: {
         'mono': ['JetBrains Mono', 'monospace'], 
