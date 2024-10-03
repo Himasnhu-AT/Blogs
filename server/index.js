@@ -14,7 +14,7 @@ const blog = new Blog();
 
 // Load environment variables from .env file
 const PORT = process.env.PORT || 3000;
-const DB = process.env.MONGODB_URI;
+const DB = process.env.MONGODB_URI || "mongodb://localhost:27017/blogss";
 
 dotenv.config();
 
